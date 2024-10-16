@@ -1,0 +1,9 @@
+#topL, #middleL, #bottomL{
+  background: red;
+  padding: 2.5px;
+  margin: 2px;
+}
+#navIconContainer{
+  height: 50px;
+  width: 50px;
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QuickShare</title>
+    <style>
+      body {
+        margin: 0px;
+        height: 2000px;
+      }
+
+      /* for mobile screen */
+      @media screen and (max-width: 769px) {
+        .container {
+          display: inline-flex;
+          margin-top: 20px;
+          background-color: red;
+          position: fixed;
+        }
+
+        .bar1,
+        .bar2,
+        .bar3 {
+          width: 35px;
+          height: 5px;
+          background-color: hotpink;
+          margin: 6px 0px;
+          transition: 0.3s;
+          border-radius: 5px;
+        }
+
+        .change .bar1 {
+          -webkit-transform: rotate(-315deg) translate(8px, 7px);
+          transform: rotate(-315deg) translate(8px, 7px);
+        }
+
+        .change .bar2 {
+          opacity: 0;
+          -webkit-transform: translate(-0px, -15px);
+          transform: translate(-0px, -15px);
+        }
+
+        .change .bar3 {
+          -webkit-transform: rotate(315deg) translate(8px, -8px);
+          transform: rotate(315deg) translate(8px, -8px);
+        }
+        .menuBar {
+          height: 10%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #111;
+          overflow-x: scroll;
+          padding-top: 60px;
+          transition: 0.2s;
+        }
+        .change .menuBar {
+          width: 250px;
+          height: 100%;
+          background-color: hotpink;
+        }
+        .navIcon {
+          border: none;
+          position: fixed;
+          right: 10px;
+        }
+
+        .menuBar ul li {
+          list-style: none;
+          display: inline-block;
+          margin: 20px;
+        }
+        #navbar {
+          background-color: #050505; /* Black background color */
+          top: 0; /* Stay on top */
+          transition: top 0.3s; /* Transition effect when sliding down (and up) */
+        }
+
+        #navbar a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+      }
+      /* for wide screen */
+      @media screen and (min-width: 769px) {
+        .navIcon {
+          display: none;
+        }
+
+        .menuBar {
+          width: 100%;
+          background-color: rgb(222, 17, 17);
+          opacity: 0.3;
+          text-align: right;
+          position: fixed;
+          border-top: 10px solid black;
+          margin: 0, auto;
+        }
+        .menuBar ul {
+          width: 80%;
+        }
+        .menuBar ul li {
+          list-style: none;
+          display: inline-block;
+        }
+
+        .menuBar ul li a {
+          text-decoration: none;
+          color: white;
+          font-size: xx-large;
+          padding: 10px;
+        }
+
+        body {
+          background-image: url("Resources/Garlic.jpg");
+          background-size: cover;
+          background-position: fixed;
+          background-repeat: no-repeat;
+          height: 1000px;
+        }
+        #navbar {
+          background-color: #050505; /* Black background color */
+          top: 0; /* Stay on top */
+          transition: top 0.3s; /* Transition effect when sliding down (and up) */
+        }
+
+        #navbar a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo">Logo</h1>
+        <div class="mContainer" onclick="myFunction(this)">
+          <button class="navIcon" type="button" title="Navigation Menu">
+            <p class="bar1"></p>
+            <p class="bar2"></p>
+            <p class="bar3"></p>
+          </button>
+
+          <div class="menuBar" id="navbar">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#store">Store</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#order">Order</a></li>
+              <li><a href="#tools">Tools</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      function myFunction(x) {
+        x.classList.toggle("change");
+      }
+
+      /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("navbar").style.top = "0";
+        } else {
+          document.getElementById("navbar").style.top = "-150px";
+        }
+        prevScrollpos = currentScrollPos;
+      };
+    </script>
+  </body>
+</html>
